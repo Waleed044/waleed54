@@ -1,0 +1,13 @@
+Welcome to example.com, <%= @user.email %>
+===============================================
+ 
+You have successfully signed up to example.com,
+your username is: <%= @user.email %>.
+ 
+To login to the site, just follow this link:
+<form action="http://127.0.0.1:3000/users/sign_in">
+    <input type="click here" value="Go to Article" />
+</form>
+ <%= new_user_session_url %>.
+ 
+Thanks for joining and have a great day!

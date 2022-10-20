@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<script>
+function clic(){
+    window.location.href = "http://127.0.0.1:3000/articles/new";
+}
+</script>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to example.com, <%= @user.email %></h1><br>
+    <h1>Article ID</h1>
+    <% id = @user.articles.last.id %>
+    <p>
+      You have successfully signed up to example.com,
+      your username is: <%= @user.email %>.<br>
+    </p>
+    <p>
+
+<%= link_to "New Article", "http://127.0.0.1:3000/articles/#{id}" %>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

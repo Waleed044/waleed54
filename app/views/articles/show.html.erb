@@ -7,10 +7,22 @@
   <strong>Description:</strong>
   <%= @article.description %>
 </p>
- 
+
+<p>
+<strong> Category: </strong>
+<% @article.categories.each do | category |  %>
+<li>
+<%= category.name %>
+</li>
+<% end %>
+</p>
+
+
+<%= image_tag(@article.image, :size => "260x180", :crop => :fill) %>
+
+
 <h2>Comments</h2>
 <%= render @article.comments %>
- 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
  

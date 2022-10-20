@@ -1,0 +1,18 @@
+<p>
+  <strong>Category:</strong>
+  <%= @category.name %>
+</p>
+
+<% if @category.attachments.any? %>
+    <strong>Attachments:</strong>
+    <ul>
+      <% @category.attachments.each do |attachment| %>
+        <% attachment.attachments.each do |a| %>
+          <%= image_tag(a,:size => "260x180", :crop => :fill) %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+
+<%= link_to 'Edit', edit_category_path() %> 
+<%= link_to 'Back', categories_path %>

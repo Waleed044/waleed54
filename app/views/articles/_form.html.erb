@@ -13,17 +13,30 @@
       </ul>
     </div>
   <% end %>
- 
+
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
   </p>
-  
+
   <p>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
   </p>
- 
+
+  <p>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </p>
+
+  <p>
+    <strong> Please select category</strong><br>
+    <% Category.all.each do |category| %>
+    <%= form.check_box :category, {multiple: true}, category.id%>
+    <%= form.label :category, category.name  %>
+    <% end %>
+  </p>
+
   <p>
     <%= form.submit %>
   </p>

@@ -1,33 +1,31 @@
-
-<% if !user_signed_in? %>
-  <%= link_to "Sign In", new_user_session_path  %>  | 
-  <%= link_to "Sign Up", new_user_registration_path%>
-<%else%>
-  <%=link_to "Sign Out", destroy_user_session_path, method: :delete%><br><br>
-
-    <h1>Listing Articles</h1>
-  <% if current_user.blogger? %>
-    <%= link_to 'New article', new_article_path %>
-  <% end %>
+<h1>Articles</h1><br>
+<%= link_to "Edit Profile", edit_user_registration_path %>
+<br><br>
+<strong> User name:</strong> <%= current_user.name %><br>
+<strong> Contact number:</strong> <%= current_user.contact %>
+<br><br>
+  <%= link_to 'New article', new_article_path %>
   <table>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
+      <th>Title</th><br>
+      <br><th>Description</th>
       <th colspan="3"></th>
     </tr>
 
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.title %></td><br>
-        <br><td><%= article.description %></td>
+        <td><%= article.title %></td> 
+        <td><%= article.description %></td>
         <td><%= link_to 'Show', article_path(article) %></td>
-        <%# <% if current_user.blogger? %> 
         <td><%= link_to 'Edit', article_path(article) %></td>
         <td><%= link_to 'Destroy', article_path(article),
                 method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
-      <%# <%end%>
-      </tr>
+                data: { confirm: 'Are you sure?' } %></td>  
     <% end %>
-  </table>  
+  </table>
+    <% if !user_signed_in? %>
+    <%= link_to "Sign In", new_user_session_path  %>  | 
+    <%= link_to "Sign Up", new_user_registration_path%>
+  <%else%>
+    <%=link_to "Sign Out", destroy_user_session_path, method: :delete%><br>
 <%end%>
